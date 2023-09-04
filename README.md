@@ -3,8 +3,8 @@ using graph traversal algorithm A-star, fastest routes between starting and end 
 
 ![img2](images/image2.PNG)
 
-![img1](datafiles/graph.gv.png)
-
 ![img1](images/image0.PNG)
 
 ![img1](images/image1.PNG)
+
+![img1](datafiles/graph.gv.png)
