@@ -4,8 +4,8 @@ using graph traversal algorithm A-star, fastest routes between starting and end 
 The data from the selected day is stored in the "datafiles" folder. In the datafiles folder the name of the stations can be found aswell. 
 
 ![img2](images/image2.PNG)
-<br><br><br><br><br><br>
-Example from running the program: <br>
+<br><br><br><br><br>
+Example from running the program: <br><br>
 ![img1](images/image0.PNG)
 
 ![img1](images/image1.PNG)
