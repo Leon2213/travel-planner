@@ -7,7 +7,7 @@ The data from the selected day is stored in the "datafiles" folder. In the dataf
 <br><br><br><br><br>
 Example from running the program: <br><br>
 ![img1](images/image0.PNG)
-
+<br><br>
 ![img1](images/image1.PNG)
 
 ![img1](datafiles/graph.gv.png)
