@@ -1,0 +1,3 @@
+740000716,Mörby centrum T-bana,59.398709,18.036220,null
+740000759,Solna station,59.365103,18.010037,null
+740001167,Ålsten Ålstens gård Spårv,59.320606,17.952079,null

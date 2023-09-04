@@ -55,7 +55,8 @@ public class Main {
     }
 
     private static void readStopTimes() throws IOException {
-        File file2 = new File("C:\\Users\\Test\\Desktop\\ALDA\\reseplanerare\\sl_stop_times.txt");
+        //File file2 = new File("C:\\Users\\Test\\Desktop\\ALDA\\reseplanerare\\sl_stop_times.txt");
+        File file2 = new File("C:\\Users\\Test\\Desktop\\reseplanerareAlda\\datafiles\\sl_stop_times.txt");
         BufferedReader br2 = new BufferedReader(new FileReader(file2));
         long old_trip_id = -1;
         Station last_station = null;

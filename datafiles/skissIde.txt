@@ -1,0 +1,120 @@
+Lista över alla hållplatsers förbindelser:
+StationNextStops<Node, List<Edges>
+List<edges> edges = StationNextStop.get(Hornstull)
+edges.add(ny hållplats)
+
+--------------------------------
+
+Går det att ta sig från A --- F? 
+
+Kolla om det finns en rutt mellan dom?
+Detta görs antingen genom att jämföra om båda existerar i en gemensam route. getCommonRoute();
+
+Eller genom en rutt-hittar-algoritm som hittar en väg, vilken som helst?
+
+
+Snabbaste vägen? 
+
+From: A
+To:   B
+Avgång: 14.00 
+
+
+
+Slå upp i lista av edges. Fråga StationNextStop(Hornstull)
+Få tillbaka vägarna till nya stationer. 
+Ta en väg och testa den. 
+Kolla då när resan avgår. t.ex. 14.02. 
+14.02 - starTid(14.00) =  2. 
+Om nästa stopp är på samma Linje. 
+ankomsttid - avgångstid.  	14.08 - 14.02 = 6. 
+vikt = 2 + 6;
+
+Slå upp i lista av edges. Fråga StationNextStop
+Få tillbaka vägarna till nya stationer. 
+Pröva en edge. 
+
+1. beräkna vikten till en av de närliggande noderna
+	1.1 görs genom att ta tiden mellan noderna, subtraktion
+	1.2 lägg på avgångar. När går från A - B? 
+		1.2.1 14.02, restid 2 = 4 min. 
+		Om nästa station finns på samma ruttnummer
+		
+
+
+Key FROM, return 
+Key FROM
+Key TO
+
+ha en map över rutterna och ankomsttider. <route_ID, list<ankomstRader>>
+ha en map över hållplats och rutter<station, list<route_IDs>
+
+Kan man ta sig från A  ---  F?
+
+1. Finns det direktväg? 
+Ta fram vilka rutter som A ingår i. 
+List<Routes> = Station.getRoutes();
+loopa igenom listan av rutter som A ingår i och jämför med rutter som F ingår i.
+getCommonRoute(); returnerar rutten som båda ingår i. 
+For r : routes;
+ if(r exists in F.getRoutes) 
+    om denna rutt för A finns i listan av Fs rutter. 
+	i så fall: <-- returnera route_ID här
+		Den rutten som dom har gemensamt, 
+		Gör en ny loop som kollar att A ligger före F i den rutten. 
+		EnRuttsAllaStoppMap<Route_ID, List<routeRader>
+		kolla så att A ligger för F i den rutten. 
+		Om den gör det så räkna mellanskillnaden på avgång och ankomsttid. 
+
+
+2. 
+När det inte finns direktväg. 
+använd väg-hittar-algoritm. 
+
+kolla nodens grannar via
+List edges = Station.getEdges(). Returnerar edge, med info om FROM --- TO och ROUTE_ID och KOSTNAD.
+
+
+Ta en godtyckligt vald granne
+Räkna ut kostnaden mellan startnod och en granne via:
+Kolla alla avgångar mellan A och B genom:
+
+Starttidstation = 14.00 
+Station.getAnkomstTid(Station B); Returnerar alla ankomsttidsrader.
+loopa igenom varje ankomsttidsrad och ta ut ankomstTIDEN
+kostnaden = ankomstTiden - Startidsstation;
+t.ex.
+2         = 14.02   - 14.00
+RouteID sparas.
+lägg sedan till om det var väntetid till avgången. 
+RouteID avgångstid
+2 + väntetiden till avgången är totalkostnaden. 
+
+^ Detta blir kostnaden för att resa från A - B. 
+Sedan fortsätter man och hittar vägen från B - F t.ex. genom att gå till B - D först 
+och upprepar ovan steg. 
+
+
+
+Starttid station =  14.00
+Avgångstid =        14.02
+startKostnad = 2
+for(Edge e: grannarEdges) 
+	tidKostnad = e.getKostnad()
+	nyKostnad = tidKostnad + startKostnad;
+	if(det här är kortaste vägen, billigast kostnad, till grannen)
+		fortsätt denna vägen
+	
+
+
+
+Station/Stop{
+
+  Map avgångarTill<station, list<ankomstTid>
+  list nextStop<Edges>
+  list rutter<route_IDs>
+  // list possibleStops<stations> <--- när man loopar igenom en rutt, 
+}
+
+
+getRoutes(); 
