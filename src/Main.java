@@ -17,7 +17,7 @@ public class Main {
     private static void startPrompt() {
         Scanner sc = new Scanner(System.in);
         System.out.print("\n");
-        System.out.println("-Välkommen till reseplaneraren-");
+        System.out.println("-Welcome to the route planner-");
         String input = "y";
         while(input.equalsIgnoreCase("y")){
             Station from = null;
@@ -25,30 +25,30 @@ public class Main {
             String time = "";
             while (from == null) {
                 System.out.println(" ");
-                System.out.println("Åka från: ");
+                System.out.println("Starting station?: ");
                 String fr = sc.nextLine();
                 from = NameToStationMap.get(fr);
                 if (from == null) {
-                    System.out.println("Försök igen");
+                    System.out.println("Try again");
                 }
             }
             while (to == null) {
-                System.out.println("Åka till: ");
+                System.out.println("End destation?: ");
                 String t = sc.nextLine();
                 to = NameToStationMap.get(t);
                 if (to == null) {
-                    System.out.println("Försök igen");
+                    System.out.println("Try again");
                 }
             }
             while (time.isEmpty()) {
-                System.out.println("Tidpunkt XX:XX");
+                System.out.println("Time XX:XX?:");
                 time = sc.nextLine();
                 if (time.isEmpty()) {
-                    System.out.println("Försök igen");
+                    System.out.println("Try again");
                 }
             }
             fastestRoute(from, to, time);
-            System.out.println("Söka en ny tid? y/n");
+            System.out.println("Search a new time? y/n");
             input = sc.nextLine();
         }
 
@@ -240,17 +240,17 @@ public class Main {
         }
         Collections.reverse(path);
         System.out.println("\n\n\n\n");
-        System.out.println("För starthållplats: " + startStation.getStop_name());
-        System.out.println("Till sluthållplats: " + endStation.getStop_name());
-        System.out.println("För önskad starttid : " + sTime);
-        System.out.println("Ankomst tiden till slutstation är: " + endStation.getArrivalTimeString());
+        System.out.println("For start destination: " + startStation.getStop_name());
+        System.out.println("To end destination: " + endStation.getStop_name());
+        System.out.println("For requested time : " + sTime);
+        System.out.println("Arrival time to end desination: " + endStation.getArrivalTimeString());
         System.out.println(" ");
-        System.out.println("Vägen att ta är: ");
+        System.out.println("The route to take is: ");
         System.out.println(" ");
-        System.out.println("Från " + startStation.getStop_name() + ": ");
+        System.out.println("From " + startStation.getStop_name() + ": ");
         System.out.println("--------------------");
         for (Station s : path) {
-            System.out.println(" Ankomsttid: " + s.getArrivalTimeString());
+            System.out.println(" Arrivaltime: " + s.getArrivalTimeString());
             System.out.println(" " + s.getStop_name());
             System.out.println("--------------------");
         }
